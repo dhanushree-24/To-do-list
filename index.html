@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskMaster - Interactive To-Do List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-wrapper">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-area">
+        <div class="logo-icon">✓</div>
+        <h1>TaskMaster</h1>
+      </div>
+      <p class="subtitle">Organize your day, keep track of progress</p>
+      <div id="current-date" class="date-badge"></div>
+    </header>
+
+    <!-- Main Card -->
+    <main class="card">
+      <!-- Task Creation Form -->
+      <form id="form" class="task-form" autocomplete="off">
+        <div class="input-group">
+          <input 
+            type="text" 
+            id="text" 
+            placeholder="What do you need to get done?" 
+            aria-label="New task input"
+            maxlength="150"
+          >
+          <button type="submit" id="add-btn" class="btn btn-primary" aria-label="Add task">
+            <span>Add Task</span>
+            <svg class="icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+        <p id="input-error" class="error-msg" aria-live="polite"></p>
+      </form>
+
+      <!-- Filter Controls & Actions Bar -->
+      <div class="toolbar">
+        <div class="filters" role="tablist" aria-label="Filter tasks">
+          <button type="button" class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button type="button" class="filter-btn" data-filter="active" role="tab" aria-selected="false">Active</button>
+          <button type="button" class="filter-btn" data-filter="done" role="tab" aria-selected="false">Done</button>
+        </div>
+
+        <button type="button" id="clear-completed" class="btn btn-subtle" title="Remove all completed tasks">
+          Clear Completed
+        </button>
+      </div>
+
+      <!-- Task List Container -->
+      <section class="task-list-section">
+        <ul id="list" class="task-list" aria-label="Tasks list">
+          <!-- Dynamically populated by app.js -->
+        </ul>
+        <div id="empty-state" class="empty-state hidden">
+          <div class="empty-icon">📝</div>
+          <p class="empty-title">No tasks found</p>
+          <p class="empty-subtitle">Add a new task above to stay productive!</p>
+        </div>
+      </section>
+
+      <!-- Footer Stats -->
+      <footer class="card-footer">
+        <span id="count" class="counter">0 tasks left</span>
+        <span id="completion-stats" class="stats-detail">0% done</span>
+      </footer>
+    </main>
+
+    <!-- App Footer / Motivation -->
+    <footer class="app-footer">
+      <p>InternCircle Web Development • Project 02: Interactive To-Do List</p>
+      <div class="quote-container" id="quote-container">
+        <span class="quote-icon">✨</span>
+        <span id="quote-text" class="quote-text">"Small daily improvements lead to stunning results."</span>
+        <button type="button" id="new-quote-btn" class="quote-refresh-btn" aria-label="Get new inspirational quote" title="Get another quote">🎲</button>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
